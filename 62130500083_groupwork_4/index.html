@@ -28,23 +28,29 @@
   <script src="https://unpkg.com/vue@next"></script>
 </head>
 
-<body>
+<body class="bg-purple-200">
   <div id="app">
-    <div id="header" class="bg-gray-200 h-28  w-full flex justify-center ">
+    <div id="header" class="bg-gray-200 h-28  w-screen flex justify-center ">
       <div class="text-3xl p-8 ">My favorite Meoww ({{countimage}})</div>
     </div>
-    <div id="body" class="bg-purple-200 w-screen flex flex-col justify-center " >
-         <div id="search">
-          <img src="images/search.png" @click="clickSearch" class=" w-14 h-12 float-right mt-3 mr-8 ">
-          <!-- <div>
-          <input type="text" placeholder="Please enter text for searching photos"  class=" mx-5 mt-5">  
-          <button value="cancel" class="bg-white mx-5">Cancel</button>
-        </div> -->
+    <div id="body" class="w-screen flex flex-col justify-center " >
+         <div id="search" class="flex justify-end ">
+          <img src="images/search.png"  v-if="search"  @click="toggleSearch" class=" w-14 h-12 float-right mt-3 mr-8 ">
+          <div v-if="!search">
+            <input type="text" placeholder="Please enter text for searching photos"  class=" mx-5 mt-5 p-1.5" v-model="searching">  
+            <button  value="cancel" @click="toggleSearch" class="bg-white mx-5">Cancel</button>
+          </div>
         </div>
-      <div v-for="(item, index) in items" class=" flex flex-col items-center ">           
-        <img :src="item.image" @click="toggleDone(index)" class="w-64 h-60 my-7">
-        <p class="text-xl">{{item.name}}</p>
-        <img v-show="item.liked" src="./images/paw.png" class="w-14 h-12 ">
+        <div v-show="isShow" id="preview" class="bg-yellow-200 flex justify-center m-2">
+          <img :src="showSrc" class="h-96 p-2" > 
+          <div id="close" class="bg-red-200 w-10 h-10 absolute right-3 mt-3" @click="closePreview">
+            <p class="text-2xl text-center">X</p>
+          </div>
+        </div>
+      <div v-for="(item, index) in items" class=" flex flex-col items-center">           
+        <img :src="item.image" @click="toggleDone(index);show(item);" class="w-64 h-60 my-7"  v-if="item.isShow">
+        <p class="text-xl" v-if="item.isShow">{{item.name}}</p>
+        <img v-show="item.liked" src="./images/paw.png" class="w-14 h-12 " v-if="item.isShow">
       </div>
     </div>
   </div>
