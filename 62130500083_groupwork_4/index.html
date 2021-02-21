@@ -46,7 +46,11 @@
           <div id="close" class="bg-red-200 w-10 h-10 absolute right-3 mt-3" @click="closePreview">
             <p class="text-2xl text-center">X</p>
           </div>
+         
         </div>
+         <div id="noPhoto" v-if="isNoPhoto">
+            <p class="text-2xl text-center">No photo</p>
+          </div>
       <div v-for="(item, index) in items" class=" flex flex-col items-center">           
         <img :src="item.image" @click="toggleDone(index);show(item);" class="w-64 h-60 my-7"  v-if="item.isShow">
         <p class="text-xl" v-if="item.isShow">{{item.name}}</p>

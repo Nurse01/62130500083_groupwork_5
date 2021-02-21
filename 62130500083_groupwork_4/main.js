@@ -9,7 +9,8 @@ const app = {
             search : true,
             searching: "",
             isShow : false,
-            showSrc: ""
+            showSrc: "",
+            isNoPhoto:false
         }
     },
     methods: {
@@ -22,13 +23,21 @@ const app = {
 
         },
         searchFunc(searching){
+            let photoAmout = this.items.length;
+            let i =0;
              this.items.forEach( item=> {
                 if (item.name.includes(searching)) {
                     item.isShow = true;
                 }else{
                     item.isShow =false;
+                    i++;
+                    console.log(i)
+
                 }
-            });        
+            }); 
+            if(photoAmout == i ){
+                this.isNoPhoto = true;
+            }       
         },
         show(item){
             this.isShow = true;
