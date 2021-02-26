@@ -59,4 +59,4 @@ const app = {
         this.searchFunc(this.searching)
     }
 }
-Vue.createApp(app).mount('#app')
+Vue.createApp(app)
