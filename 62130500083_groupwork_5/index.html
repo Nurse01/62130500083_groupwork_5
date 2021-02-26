@@ -33,10 +33,13 @@
     <div id="header" class="bg-gray-200 h-28  w-screen flex justify-center ">
       <div class="text-3xl p-8 ">My favorite Meoww ({{countimage}})</div>
     </div>
-    <div id="body" class="w-screen flex flex-col justify-center " >
-         
+    <div id="body" class="w-screen flex flex-col justify-center " >   
+
       <photo-search @search="searchFunc"></photo-search>
 
+        <p class="text-lg italic text-gray-500 text-center">Double Click To Like !!</p>
+
+      <photo-item :isShow="isShow" :items="items"></photo-item>
 
         <div v-show="isShow" id="preview" class="bg-yellow-200 flex justify-center m-2">
           <img :src="showSrc" class="h-96 p-2" > 
@@ -48,11 +51,7 @@
          <div id="noPhoto" v-if="isNoPhoto">
             <p class="text-2xl text-center">No photo</p>
           </div>
-      <div v-for="(item, index) in items" class=" flex flex-col items-center">           
-        <img :src="item.image" @click="toggleDone(index);show(item);" class="w-64 h-60 my-7"  v-if="item.isShow">
-        <p class="text-xl" v-if="item.isShow">{{item.name}}</p>
-        <img v-show="item.liked" src="./images/paw.png" class="w-14 h-12 " v-if="item.isShow">
-      </div>
+ 
     </div>
   </div>
 
@@ -61,7 +60,8 @@
   <!-- my main.js -->
 
   <script src="main.js"></script>
-  <script src="./components/photoSearch.js"></script>
+  <script src="./components/PhotoSearch.js"></script>
+  <script src="./components/PhotoItem.js"></script>
 
   <script>const mountedApp = app.mount('#app'); </script>
 </body>

@@ -8,15 +8,12 @@ const app = Vue.createApp({
             ],
             
             isShow : false,
-            showSrc: "",
+           
             isNoPhoto:false
         }
     },
     methods: {
-        toggleDone(index) {
-            this.items[index].liked = !this.items[index].liked
-        },
-
+ 
         searchFunc(searching){
             console.log(searching);
             let photoAmout = this.items.length;
@@ -34,11 +31,6 @@ const app = Vue.createApp({
             if(photoAmout == i ){
                 this.isNoPhoto = true;
             }       
-        },
-        show(item){
-            this.isShow = true;
-            this.showSrc = item.image;
-
         },
         closePreview(){
             this.isShow = false;
