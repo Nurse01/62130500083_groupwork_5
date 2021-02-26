@@ -1,4 +1,4 @@
-const app = {
+const app = Vue.createApp({
     data() {
         return {
             items: [
@@ -6,8 +6,7 @@ const app = {
                 { name: 'yoda', image: 'images/yoda.jpg', liked: false ,isShow: true},
                 { name: 'jubcream', image: 'images/jubcream.jpg', liked: false , isShow: true }
             ],
-            search : true,
-            searching: "",
+            
             isShow : false,
             showSrc: "",
             isNoPhoto:false
@@ -17,21 +16,18 @@ const app = {
         toggleDone(index) {
             this.items[index].liked = !this.items[index].liked
         },
-        toggleSearch() {
-            this.search = !this.search
-            this.searching = "";
 
-        },
         searchFunc(searching){
+            console.log(searching);
             let photoAmout = this.items.length;
             let i =0;
              this.items.forEach( item=> {
                 if (item.name.includes(searching)) {
                     item.isShow = true;
                 }else{
-                    item.isShow =false;
+                    item.isShow = false;
                     i++;
-                    console.log(i)
+                    // console.log(i)
 
                 }
             }); 
@@ -55,8 +51,4 @@ const app = {
             return this.items.length
         }
     },
-    beforeUpdate() {
-        this.searchFunc(this.searching)
-    }
-}
-Vue.createApp(app)
+});

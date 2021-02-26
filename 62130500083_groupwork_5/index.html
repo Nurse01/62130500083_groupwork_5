@@ -34,13 +34,10 @@
       <div class="text-3xl p-8 ">My favorite Meoww ({{countimage}})</div>
     </div>
     <div id="body" class="w-screen flex flex-col justify-center " >
-         <div id="search" class="flex justify-end ">
-          <img src="images/search.png"  v-if="search"  @click="toggleSearch" class=" w-14 h-12 float-right mt-3 mr-8 ">
-          <div v-if="!search">
-            <input type="text" placeholder="Please enter text for searching photos"  class=" mx-5 mt-5 p-1.5" v-model="searching">  
-            <button  value="cancel" @click="toggleSearch" class="bg-white mx-5">Cancel</button>
-          </div>
-        </div>
+         
+      <photo-search @search="searchFunc"></photo-search>
+
+
         <div v-show="isShow" id="preview" class="bg-yellow-200 flex justify-center m-2">
           <img :src="showSrc" class="h-96 p-2" > 
           <div id="close" class="bg-red-200 w-10 h-10 absolute right-3 mt-3" @click="closePreview">
@@ -64,6 +61,7 @@
   <!-- my main.js -->
 
   <script src="main.js"></script>
+  <script src="./components/photoSearch.js"></script>
 
   <script>const mountedApp = app.mount('#app'); </script>
 </body>
