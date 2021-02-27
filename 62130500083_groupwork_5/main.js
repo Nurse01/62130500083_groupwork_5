@@ -7,13 +7,12 @@ const app = Vue.createApp({
                 { name: 'jubcream', image: 'images/jubcream.jpg', liked: false , isShow: true }
             ],
             
-            isShow : false,
-           
+            isShow : false,       
+            showSrc:"",
             isNoPhoto:false
         }
     },
     methods: {
- 
         searchFunc(searching){
             console.log(searching);
             let photoAmout = this.items.length;
@@ -25,17 +24,21 @@ const app = Vue.createApp({
                     item.isShow = false;
                     i++;
                     // console.log(i)
-
                 }
             }); 
             if(photoAmout == i ){
                 this.isNoPhoto = true;
             }       
         },
-        closePreview(){
+        show(item){
+            this.isShow = true;
+            this.showSrc = item.image;
+            console.log(this.showSrc);
+        },
+        close(){
             this.isShow = false;
         }
-        
+
     },
 
     computed: {
