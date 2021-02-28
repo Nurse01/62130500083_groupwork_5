@@ -5,8 +5,7 @@ const app = Vue.createApp({
                 { name: 'tumamink', image: 'images/tumamink.jpg', liked: false ,isShow: true},
                 { name: 'yoda', image: 'images/yoda.jpg', liked: false ,isShow: true},
                 { name: 'jubcream', image: 'images/jubcream.jpg', liked: false , isShow: true }
-            ],
-            
+            ],          
             isShow : false,       
             showSrc:"",
             isNoPhoto:false
@@ -33,7 +32,7 @@ const app = Vue.createApp({
         show(item){
             this.isShow = true;
             this.showSrc = item.image;
-            console.log(this.showSrc);
+            // console.log(this.showSrc);
         },
         close(){
             this.isShow = false;

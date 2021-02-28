@@ -38,15 +38,14 @@
       <!-- Photo search -->
       <photo-search @search="searchFunc"></photo-search>
 
-      <p class="text-lg italic text-gray-500 text-center">Double Click To Like !!</p>
+        <p class="text-lg italic text-gray-500 text-center">Double Click To Like !!</p>
 
       <!-- Photo view -->
-      <photo-view  v-show="isShow" :showSrc="showSrc"  @close="close"></photo-view>
+      <photo-view  v-show="isShow" :src="showSrc"  @close="close"></photo-view>
 
       <!-- Photo items -->
       <photo-item :items="items" @clicked-view="show" ></photo-item>
    
-
         <div id="noPhoto" v-if="isNoPhoto">
           <p class="text-2xl text-center">No photo</p>
         </div>

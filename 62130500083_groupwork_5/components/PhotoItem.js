@@ -11,7 +11,6 @@ app.component("photo-item", {
         items:Array
         
     },
-
     methods: {
         toggleDone(index) {
             this.items[index].liked = !this.items[index].liked
